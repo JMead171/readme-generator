@@ -6,12 +6,17 @@ module.exports = readmeData => {
   # My Project       
   ${name} 
   
+
+
   ## Badge
   ${badge}
 
 
+
   ## Description
   ${description}
+
+
 
   ## Table of Contents
   
@@ -21,33 +26,33 @@ module.exports = readmeData => {
   * [Contributing](#contributing)
 
   
+
   ## Installation
-  
   ${installation}
   
+
   
   ## Usage 
-  
   ${usage} 
   
 
+
   ## License
-  
   The project is licensed by ${license}. 
   
-  
-  
+
+    
   ## Contributing
-  
   ${contribution}
   
+
+
   ## Tests
-  
   ${test}
 
+
+  
   ## Questions
-
   Please send questions to ${email}, more information can be found at ${link}
-
   `;
 };

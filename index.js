@@ -44,7 +44,7 @@ const promptQuestions = questionData => {
     {
         type: 'checkbox',
         name: 'license',
-        message: 'What licenses do you have with this project? (Check all that apply)',
+        message: 'What licenses do you have with this project? (Select one)',
         choices: ['MIT', 'BSD', 'GPL', 'Apache']
     },
     {
@@ -57,7 +57,6 @@ const promptQuestions = questionData => {
         name: 'test',
         message: 'Provide test instructions',
     },
-
     {
         type: 'input',
         name: 'link',
@@ -98,10 +97,10 @@ promptQuestions()
     if (questionData.license = ["BSD"]) {
         questionData.badge = "[![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)"
     }
-    if (license = ["GPL"]) {
+    if (questionData.license = ["GPL"]) {
         questionData.badge = "[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](http://www.gnu.org/licenses/gpl-3.0)"
     }
-    if (license = ["Apache"]) {
+    if (questionData.license = ["Apache"]) {
         questionData.badge = "[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)"
     }
     return generatePage(questionData); 
