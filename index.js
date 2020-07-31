@@ -1,13 +1,9 @@
+const {writeFile} = require('./utils/generateMarkdown.js');
+const generatePage = require('./src/page-template.js');
+
 const inquirer = require('inquirer');
 
-// array of questions for user
-//const questions = [
-
-const promptQuestions = projectData => {
-    // If there's no 'questions' array property, create one
-    if (!projectData.questions) {
-        projectData.questions = [];
-    }
+const promptQuestions = questionData => {
     return inquirer.prompt([
     {
         type: 'input',
@@ -49,7 +45,7 @@ const promptQuestions = projectData => {
         type: 'checkbox',
         name: 'license',
         message: 'What licenses do you have with this project? (Check all that apply)',
-        choices: ['MIT', 'BSD', 'GPL']
+        choices: ['MIT', 'BSD', 'GPL', 'Apache']
     },
     {
         type: 'input',
@@ -89,29 +85,29 @@ const promptQuestions = projectData => {
         }
     },
     ])
-    .then(projectData => {
-        portfolioData.questions.push(projectData);
-        return portfolioData;
-    })
 };
  
-// function to write README file
-function writeToFile(fileName, data) {
-}
 
-// function to initialize program
-function init() {
-
-}
-
-// function call to initialize program
-//init();
 promptQuestions()
-  .then(portfolioData => {
-    return generatePage(portfolioData); 
+  .then(questionData => {
+    console.log(questionData);  
+    console.log(questionData.license);
+    if (questionData.license = ["MIT"]) {
+        questionData.badge = "[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)"
+    }
+    if (questionData.license = ["BSD"]) {
+        questionData.badge = "[![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)"
+    }
+    if (license = ["GPL"]) {
+        questionData.badge = "[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](http://www.gnu.org/licenses/gpl-3.0)"
+    }
+    if (license = ["Apache"]) {
+        questionData.badge = "[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)"
+    }
+    return generatePage(questionData); 
   })
-  .then(pageHTML => {
-    return writeFile(pageHTML);
+  .then(pageReadme => {
+    return writeFile(pageReadme);
   })
   .then(writeFileResponse => {
     console.log(writeFileResponse);
